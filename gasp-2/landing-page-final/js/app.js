@@ -1,3 +1,5 @@
+
+const initialPageAnimation = () => { 
 let tl = gsap.timeline()
 tl.fromTo(
   ".logo",
@@ -156,3 +158,28 @@ tl.fromTo(
     },
     "h1Show+=1"
   );
+};
+
+
+const delay = (n) => { 
+  return new Promise((done) => { 
+    setTimeout(() => { 
+      done();
+    }, n)
+  })
+}
+
+barba.init({ 
+  sync: true,
+  transitions: [ 
+    { 
+      name: "page-wipe", 
+      async leave(data){ 
+        console.log("Leaving Page Animation");
+      }, 
+      async enter(data){ 
+        console.log("Entering Page Animation");
+      }
+    }
+  ]
+})
